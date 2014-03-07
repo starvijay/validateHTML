@@ -1,0 +1,41 @@
+<script language="JavaScript">
+  // Create a connection to the file.
+  var Connect = new XMLHttpRequest();
+ 
+  // Define which file to open and
+  // send the request.
+  document.write("welcome1");
+  Connect.open("GET", "http://api.wunderground.com/auto/wui/geo/GeoLookupXML/index.xml?query=13.0810,80.2740", false);
+  Connect.setRequestHeader("Content-Type", "text/xml");
+  Connect.send(null);
+ 
+  // Place the response in an XML document.
+  var TheDocument = Connect.responseXML;
+  
+  document.write("hello");
+ 
+  // Place the root node in an element.
+  var Customers = TheDocument.childNodes[0];
+ 
+  // Retrieve each customer in turn.
+  for (var i = 0; i < Customers.children.length; i++)
+  {
+   var Customer = Customers.children[i];
+  
+   // Access each of the data values.
+   var Name = Customer.getElementsByTagName("city");
+   var Age = Customer.getElementsByTagName("zip");
+   var Color = Customer.getElementsByTagName(
+     "wmo");
+  
+   // Write the data to the page.
+   document.write("welcome");
+   document.write("<tr><td>");
+   document.write(Name[0].textContent.toString());
+   document.write("</td><td>");
+   document.write(Age[0].textContent.toString());
+   document.write("</td><td>");
+   document.write(Color[0].textContent.toString());
+   document.write("</td></tr>");
+  }
+</script>

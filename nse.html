@@ -1,0 +1,91 @@
+<html ng-app>
+<head>
+<meta name="google-site-verification" content="_6f0Gi7L0RyoXgBZylRz7MTCbd5dWhMOnZJ37dVM7iA" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<title>NSE - National Stock Exchange of India Ltd.</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+
+<link href="http://feeds.feedburner.com/nseindia/ann" title="NSE - Corporate Announcements [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/circulars" title="NSE - Circuars [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/boardmeet" title="NSE - Board Meetings [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/results" title="NSE - Financial Results [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/ca" title="NSE - Corporate Actions [RSS]" type="application/rss+xml" rel="alternate">
+
+<link href="http://feeds.feedburner.com/nseindia/CMDailyReport" title="NSE - CMDailyReport [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/FODailyReport" title="NSE - FODailyReport [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/SLBMDailyReport" title="NSE - SLBMDailyReport [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/CDDailyReport" title="NSE - CDDailyReport [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/IRDDailyReport" title="NSE - IRDDailyReport [RSS]" type="application/rss+xml" rel="alternate">
+<link href="http://feeds.feedburner.com/nseindia/UxpO" title="NSE - RSSDailyReport [RSS]" type="application/rss+xml" rel="alternate">
+
+<link href="http://www.nseindia.com/common/css/style.css" rel="stylesheet" type="text/css" />
+<!--[if IE 8]>
+<link href="/common/css/ie8.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!--[if IE 7]>
+<link href="/common/css/ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!--[if IE 6]>
+<link href="/common/css/ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="text/javascript">
+	var page=["home","products"];
+</script>
+<script type="text/javascript" src="http://www.nseindia.com/common/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://www.nseindia.com/common/js/mainNav.js"></script>
+<script type="text/javascript" src="http://www.nseindia.com/common/js/js.js"></script>
+<script type="text/javascript" src="http://www.nseindia.com/common/js/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.nseindia.com/common/css/skin.css" />
+<link rel="shortcut icon" type="image/x-icon" href="http://www.nseindia.com/common/images/favicon.ico" />
+
+<!-- Indices data - RahulP -->
+<script type="text/javascript" src="http://www.nseindia.com/homepage/homepageIndices.js"></script>
+<!-- Added for Top Gainers/Losers/Active/Traded -->
+<script type="text/javascript" src="http://www.nseindia.com/javaScript/fillHomepageData.js"></script>
+<body >
+<table width=800  cellspacing=2 cellpadding=2 height=800 style="background: linear-gradient(to bottom, #ffffff 12%,#e5e5e5 100%); /* W3C */">
+<tr>
+<td>This is written in style
+<tr>
+<td>CSS is fun
+<tr>
+<td>This is written in style
+<tr>
+<td>This is written in style
+<tr>
+<td>This is written in style
+
+</tr>
+</table>
+asdf
+sfsd
+f
+sf
+ds
+<script>
+	$(document).ready(function(){
+		$("#tab14Content").show();
+		$("#tab5Content").show();
+		$("#tab6Content").hide();
+		$("#tab7Content").hide();
+		window.setInterval('loadIndicesData();getNifty();getTopGainersData();', 60*1000);
+		getNextTrdDate();
+		}
+	);
+	
+	
+</script>
+
+
+
+    <div>
+      <label><span class="icon-thumbs-up"></span>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+    </div>
+  
+
+</body>
+</html>

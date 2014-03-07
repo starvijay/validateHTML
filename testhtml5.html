@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        navigator.geolocation.getCurrentPosition(function (position) {
+            alert(position.coords.latitude + ',' + position.coords.longitude);
+        }, function (error) {
+            alert(error.code);
+        }, {enableHighAccuracy: true, maximumAge: 0});
+    </script>
+</body>

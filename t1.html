@@ -1,0 +1,563 @@
+<html>
+<script type="text/javascript" src="http://stat.dinamalar.com/new/js/jquery1.js"></script>
+<script type="text/javascript" src="http://stat.dinamalar.com/new/js/common.js"></script>
+<script type="text/javascript" src="http://stat.dinamalar.com/new/photo/js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="http://stat.dinamalar.com/new/photo/js/jquery.gridAccordion.min.js"></script>
+<script type="text/javascript" src="http://stat.dinamalar.com/new/photo/js/photogallery.js"></script>
+
+<script type="text/javascript">
+var http=null;
+gethttp();
+//window.onload = weather(320);
+function gethttp()
+{ try { http = new XMLHttpRequest(); } 	catch(err1) 	{ 	 try { http = new ActiveXObject("Msxml2.XMLHTTP"); } 	 catch (err2) 	 {     try { http = new ActiveXObject("MICROSOFT.XMLHTTP"); } 	 catch (err3) { http = null; alert('your browser doesnot support ajax');}     }  }   }
+var https=null;
+gethttps();
+function gethttps()
+{ try { https = new XMLHttpRequest(); } 	catch(err1) 	{ 	 try { https = new ActiveXObject("Msxml2.XMLHTTP"); } 	 catch (err2) 	 {     try { https = new ActiveXObject("MICROSOFT.XMLHTTP"); } 	 catch (err3) { https = null; alert('your browser doesnot support ajax');}     }  }   }
+var httpss=null;
+gethttpss();
+function gethttpss()
+{ try { httpss = new XMLHttpRequest(); } 	catch(err1) 	{ 	 try { httpss = new ActiveXObject("Msxml2.XMLHTTP"); } 	 catch (err2) 	 {     try { httpss = new ActiveXObject("MICROSOFT.XMLHTTP"); } 	 catch (err3) { httpss = null; alert('your browser doesnot support ajax');}     }  }   }
+var city;
+function citylist(city)
+{
+ gethttps();
+  var code=city.split(',');
+
+  var http = createRequestObject();
+  http.open("POST","http://www.dinamalar.com/getCityforweatherdetail.asp?Country_code="+code[0]+"&city="+code[1],true);
+   if(https.readyState==4)
+   {
+    alert("vijay"+https.readyState  +code[1]);
+    }
+//  alert(code);
+ // http.open("GET","http://www.dinamalar.com/getCityforweatherdetail.asp?Country_code="+code[0]+"&date="+Math.random(),true);
+  https.open("GET","http://www.dinamalar.com/getCityforweatherdetail.asp?Country_code="+code[0]+"&city="+code[1],true);
+https.send(null);
+  https.onreadystatechange=function()
+  {
+ 
+   if(https.readyState==4)
+   {
+    alert(https.readyState  +code[1]);
+     document.getElementById('City2').innerHTML=https.responseText; 
+	 weather(code[1]);
+    }else{
+		     document.getElementById('City2').innerHTML='Loading...';
+	}
+  }
+}
+var country;
+function weather(country)
+{
+  gethttpss();
+  var currentTime = new Date()
+var month = currentTime.getMonth() + 1
+var day = currentTime.getDate()
+var year = currentTime.getFullYear()
+var hours = currentTime.getHours()
+var time = currentTime.getTime()
+var ho=hours%3
+var hours=hours-ho
+var cd=month + "/" + day + "/" + year+ "/" + hours;
+alert("http://www.dinamalar.com/weatherajax_y.asp?City_id="+country+"&dt="+cd);
+  httpss.open("GET","http://www.dinamalar.com/weatherajax_y.asp?City_id="+country+"&dt="+cd,true);
+  httpss.send(null);
+  httpss.onreadystatechange=function()
+  {
+   if(httpss.readyState==4)
+     {
+	 document.getElementById('City2').innerHTML=httpss.responseText; 
+	 }else{
+		 document.getElementById('City2').innerHTML='Loading...';
+	 }
+  }
+  //window.top.location.href = "http://www.dinamalar.com/weatherajax_y.asp?City_id="+country+"&dt="+cd;
+}
+</script>
+<body>
+<div class="clear982"></div>
+<div class="fix"></div>
+<div class="ingap"></div><!-- end of third segment-->
+<div class="sepe">
+<div class="newsdetbrd" style="margin-bottom:10px;"><div><div style="float:left; width:260px;"><a class="epapt" href="http://www.dinamalar.com/">தினமலர் முதல் பக்கம் </a> » <b>வானிலை </b> &raquo;</div> <div id="all" style="float:left; margin-left:10px; width:340px;">
+
+<select style="width:115px" onchange="citylist(this.value)" name="Country_List">
+      <option style="color:#333333" selected="" disabled="" value="">--- Country List ---</option>
+          
+      <Option value="0,222" >ஆப்கானிஸ்தான்</option>
+      
+      <Option value="1,525" >அல்பேனியா</option>
+      
+      <Option value="2,17" >அல்ஜீரியா</option>
+      
+      <Option value="226,516" >&#2949;&#2990;&#3014;&#2992;&#3007;&#2965;&#3021;&#2965; &#2970;&#2990;&#3019;&#2997;&#3006;</option>
+      
+      <Option value="3,526" >அன்டோரா</option>
+      
+      <Option value="4,266" >அங்கோலா</option>
+      
+      <Option value="224,514" >&#2949;&#2969;&#3021;&#2965;&#3007;&#2991;&#3009;&#2994;&#3006;</option>
+      
+      <Option value="225,515" >&#2949;&#2985;&#3021;&#2975;&#3006;&#2992;&#3021;&#2975;&#3007;&#2965;&#3006;</option>
+      
+      <Option value="223,513" >&#2950;&#2985;&#3021;&#2975;&#3007;&#2965;&#3009;&#2997;&#3006; &#38; &#2986;&#3006;&#2992;&#3021;&#2986;&#3009;&#2975;&#3006;</option>
+      
+      <Option value="5,94" >அர்ஜென்டீனா</option>
+      
+      <Option value="6,507" >ஆர்மேனியா</option>
+      
+      <Option value="227,517" >&#2949;&#2992;&#3009;&#2986;&#3006;</option>
+      
+      <Option value="7,106" >ஆஸ்திரேலியா</option>
+      
+      <Option value="8,491" >ஆஸ்திரியா</option>
+      
+      <Option value="9,38" >அஜெர்பைஜான்</option>
+      
+      <Option value="228,518" >&#2986;&#2965;&#3006;&#2990;&#3000;&#3021;</option>
+      
+      <Option value="10,527" >பஹ்ரைன்</option>
+      
+      <Option value="11,154" >வங்கதேசம்</option>
+      
+      <Option value="12,87" >பார்படாஸ்</option>
+      
+      <Option value="13,298" >பெலாரஸ்</option>
+      
+      <Option value="14,91" >பெல்ஜியம்</option>
+      
+      <Option value="15,60" >பெலிசி</option>
+      
+      <Option value="16,370" >பெனின்</option>
+      
+      <Option value="17,197" >பெர்முடா</option>
+      
+      <Option value="18,468" >பூடான்</option>
+      
+      <Option value="19,453" >பொலிவியா</option>
+      
+      <Option value="20,423" >போசினியா</option>
+      
+      <Option value="21,179" >போஸ்ட்வானா</option>
+      
+      <Option value="22,83" >பிரேசில்</option>
+      
+      <Option value="233,523" >&#2986;&#3007;&#2992;&#3007;&#2975;&#3021;&#2975;&#3007;&#2999;&#3021;  &#2965;&#2985;&#3021;&#2985;&#3007;&#2980;&#3021; &#2980;&#3008;&#2997;&#3009;&#2965;&#2995;&#3021;</option>
+      
+      <Option value="23,239" >புருனே</option>
+      
+      <Option value="24,436" >பல்கேரியா</option>
+      
+      <Option value="25,341" >புர்கினா பேசோ</option>
+      
+      <Option value="26,95" >புருண்டி</option>
+      
+      <Option value="27,356" >கம்போடியா</option>
+      
+      <Option value="28,505" >கேமரூன்</option>
+      
+      <Option value="29,340" >கனடா</option>
+      
+      <Option value="30,373" >கேப் வெர்டி</option>
+      
+      <Option value="31,43" >மத்திய ஆப்ரிக்க குடியரசு</option>
+      
+      <Option value="32,317" >சாட்</option>
+      
+      <Option value="33,418" >சிலி</option>
+      
+      <Option value="34,53" >சீனா</option>
+      
+      <Option value="35,528" >கிறிஸ்துமஸ் இஸ்.</option>
+      
+      <Option value="36,553" >கோகாஸ் கில்லிங் இஸ்.</option>
+      
+      <Option value="37,77" >கொலம்பியா</option>
+      
+      <Option value="38,307" >கோமோரஸ்</option>
+      
+      <Option value="39,85" >காங்கோ</option>
+      
+      <Option value="40,554" >குக் இஸ்.</option>
+      
+      <Option value="41,408" >கோஸ்டாரிகா</option>
+      
+      <Option value="42,2" >கோட்டி டி'ஐவைரி</option>
+      
+      <Option value="43,509" >TEST</option>
+      
+      <Option value="230,520" >&#2965;&#3007;&#2991;&#3010;&#2986;&#3006;</option>
+      
+      <Option value="44,327" >சைப்ரஸ்</option>
+      
+      <Option value="45,372" >செக் குடியரசு</option>
+      
+      <Option value="46,237" >டெம் ரெப் ஆப் காங்கோ</option>
+      
+      <Option value="47,137" >டென்மார்க்</option>
+      
+      <Option value="48,529" >டிஜிபௌசி</option>
+      
+      <Option value="231,521" >&#2975;&#3018;&#2990;&#3007;&#2985;&#3007;&#2965;&#3021;&#2965;&#3006;</option>
+      
+      <Option value="49,419" >டொமேனியன் குடியரசு</option>
+      
+      <Option value="50,381" >ஈக்வடார்</option>
+      
+      <Option value="51,100" >எகிப்து</option>
+      
+      <Option value="52,414" >எல் சல்வடார்</option>
+      
+      <Option value="53,275" >ஈக்குவட்டோரியல் கினியா</option>
+      
+      <Option value="54,31" >எரிட்ரியா</option>
+      
+      <Option value="55,458" >எஸ்டோனியா</option>
+      
+      <Option value="56,7" >எத்தியோப்பியா</option>
+      
+      <Option value="57,530" >பேஇரியோ இஸ்.</option>
+      
+      <Option value="58,449" >பால்க்லேண்ட் இஸ்.</option>
+      
+      <Option value="59,455" >பிஜி</option>
+      
+      <Option value="60,204" >பின்லாந்து</option>
+      
+      <Option value="61,351" >பிரான்ஸ்</option>
+      
+      <Option value="62,113" >பிரெஞ்ச் கயானா</option>
+      
+      <Option value="63,349" >பிரெஞ்ச் பாலினிசியா</option>
+      
+      <Option value="64,250" >கேபோன்</option>
+      
+      <Option value="65,462" >ஜார்ஜியா</option>
+      
+      <Option value="66,64" >ஜெர்மனி</option>
+      
+      <Option value="67,5" >கானா</option>
+      
+      <Option value="68,531" >ஜிப்ரால்டார்</option>
+      
+      <Option value="69,183" >கிராண்ட் கேமேன்</option>
+      
+      <Option value="70,33" >கிரீஸ்</option>
+      
+      <Option value="71,532" >கிரீன்லேண்ட்</option>
+      
+      <Option value="72,442" >கிரேனேடா</option>
+      
+      <Option value="73,49" >கொளடிலவ்ப்</option>
+      
+      <Option value="74,10" >கைம்</option>
+      
+      <Option value="75,192" >கவுதமாலா</option>
+      
+      <Option value="76,447" >காரென்சே</option>
+      
+      <Option value="77,133" >கினியா</option>
+      
+      <Option value="78,74" >கினியா-பிஸ்சாயூ</option>
+      
+      <Option value="79,184" >கயானா</option>
+      
+      <Option value="80,365" >ஹைட்டி</option>
+      
+      <Option value="81,463" >ஹாண்ட்ரஸ்</option>
+      
+      <Option value="82,93" >ஹங்கேரி</option>
+      
+      <Option value="83,388" >ஐஸ்லாந்து</option>
+      
+      <Option value="84,320" selected>DELHI</option>
+      
+      <Option value="85,217" >இந்தோனேசியா</option>
+      
+      <Option value="86,464" >ஈரான்</option>
+      
+      <Option value="87,37" >ஈராக்</option>
+      
+      <Option value="88,160" >அயர்லாந்து</option>
+      
+      <Option value="89,158" >இஸ்ல்  ஆப் மேன்</option>
+      
+      <Option value="90,219" >இஸ்ரேல்</option>
+      
+      <Option value="91,394" >இத்தாலி</option>
+      
+      <Option value="92,235" >ஜமைக்கா</option>
+      
+      <Option value="93,471" >ஜப்பான்</option>
+      
+      <Option value="94,443" >ஜெர்சேய்</option>
+      
+      <Option value="95,19" >ஜோர்டான்</option>
+      
+      <Option value="96,533" >கஜகஸ்தான்</option>
+      
+      <Option value="97,313" >கென்யா</option>
+      
+      <Option value="98,460" >கிரிபாதி</option>
+      
+      <Option value="99,377" >வடகொரியா</option>
+      
+      <Option value="100,426" >தென் கொரியா</option>
+      
+      <Option value="101,242" >குவைத்</option>
+      
+      <Option value="102,73" >கிரிகிஸ்தான்</option>
+      
+      <Option value="103,492" >லாஸ்</option>
+      
+      <Option value="104,390" >லாத்வியா</option>
+      
+      <Option value="105,55" >லெபனான்</option>
+      
+      <Option value="106,288" >லிசோதோ</option>
+      
+      <Option value="107,303" >லைபீரியா</option>
+      
+      <Option value="108,478" >லிபியா</option>
+      
+      <Option value="109,484" >லிச்டென்ஸ்டீன்</option>
+      
+      <Option value="110,493" >லிதுவேனியா</option>
+      
+      <Option value="111,269" >லக் ஷம்பர்க்</option>
+      
+      <Option value="113,435" >மாசிடோனியா</option>
+      
+      <Option value="114,25" >மாடகஸ்கர்</option>
+      
+      <Option value="115,252" >மாலவாய்</option>
+      
+      <Option value="116,240" >மலேஷியா</option>
+      
+      <Option value="117,277" >மாலத்தீவு</option>
+      
+      <Option value="118,40" >மாலி</option>
+      
+      <Option value="119,486" >மால்டா</option>
+      
+      <Option value="120,274" >மார்ஷல் தீவு</option>
+      
+      <Option value="121,175" >மார்டின்க்கு</option>
+      
+      <Option value="122,331" >மொரிட்டானியா</option>
+      
+      <Option value="123,534" >மொரிஷியஸ்</option>
+      
+      <Option value="234,524" >&#2990;&#2991;&#3019;&#2975;&#3021;</option>
+      
+      <Option value="124,293" >மெக்சிக்கோ</option>
+      
+      <Option value="125,345" >மைக்ரோனேஷியா</option>
+      
+      <Option value="126,121" >மால்டோவா</option>
+      
+      <Option value="127,302" >மொனாகோ</option>
+      
+      <Option value="128,535" >மங்கோலியா</option>
+      
+      <Option value="129,536" >மான்ட்செரட்</option>
+      
+      <Option value="130,382" >மொராக்கோ</option>
+      
+      <Option value="131,285" >மொசம்பிகா</option>
+      
+      <Option value="132,504" >மியான்மார்</option>
+      
+      <Option value="133,500" >நமீபியா</option>
+      
+      <Option value="134,506" >நய்ரோ</option>
+      
+      <Option value="135,227" >நேபாளம்</option>
+      
+      <Option value="136,20" >நெதர்லாந்து</option>
+      
+      <Option value="137,537" >நெதர்லாந்து அன்டில்லிஸ்</option>
+      
+      <Option value="138,332" >நியூ கலிடோனியா</option>
+      
+      <Option value="139,497" >நியூ சிலாந்து</option>
+      
+      <Option value="140,279" >நிக்கர்குவா</option>
+      
+      <Option value="141,325" >நைஜர்</option>
+      
+      <Option value="142,4" >நைஜீரியா</option>
+      
+      <Option value="143,538" >நிய்யூ</option>
+      
+      <Option value="144,539" >நார்போல்க் தீவு </option>
+      
+      <Option value="145,399" >வடக்கு மரியானா தீவு</option>
+      
+      <Option value="146,339" >நார்வே</option>
+      
+      <Option value="147,311" >ஓமன்</option>
+      
+      <Option value="148,213" >பாகிஸ்தான்</option>
+      
+      <Option value="149,540" >பலு</option>
+      
+      <Option value="150,348" >பனாமா</option>
+      
+      <Option value="151,363" >பாபா நியூ கினியா</option>
+      
+      <Option value="152,32" >பாரகுவே</option>
+      
+      <Option value="153,253" >பெரு</option>
+      
+      <Option value="154,284" >பிலிப்பைன்ஸ்</option>
+      
+      <Option value="155,6" >பிட்கெய்ர்ன்</option>
+      
+      <Option value="156,495" >போலந்து</option>
+      
+      <Option value="157,257" >போர்ச்சுகல்</option>
+      
+      <Option value="158,410" >போர்டோ ரிகா</option>
+      
+      <Option value="159,155" >கத்தார்</option>
+      
+      <Option value="160,541" >ரீயூனியன்</option>
+      
+      <Option value="161,92" >ரோமானியா</option>
+      
+      <Option value="162,308" >ரஷ்யா</option>
+      
+      <Option value="163,234" >ரூவான்டா</option>
+      
+      <Option value="164,27" >சமோ</option>
+      
+      <Option value="165,412" >சான் மரினோ</option>
+      
+      <Option value="166,542" >சா டோம்</option>
+      
+      <Option value="167,393" >சவுதி அரேபியா</option>
+      
+      <Option value="168,143" >செனகல்</option>
+      
+      <Option value="229,519" >&#2970;&#3014;&#2992;&#3021;&#2986;&#3007;&#2991;&#3006; &#38; &#2990;&#3018;&#2979;&#3021;&#2975;&#3014;&#2985;&#3015;&#2965;&#3009;&#2992;&#3019;</option>
+      
+      <Option value="169,490" >செசேல்ஸ்</option>
+      
+      <Option value="170,177" >சியர்ரா லியோன்</option>
+      
+      <Option value="171,433" >சிங்கப்பூர்</option>
+      
+      <Option value="172,84" >ஸ்லேவாக்கியா</option>
+      
+      <Option value="173,260" >ஸ்லோவினியா</option>
+      
+      <Option value="174,208" >சாலமன் தீவு</option>
+      
+      <Option value="175,300" >சோமாலியா</option>
+      
+      <Option value="176,107" >தென்  ஆப்ரிக்கா</option>
+      
+      <Option value="232,522" >&#2980;&#3014;&#2993;&#3021;&#2965;&#3009; &#2972;&#3006;&#2992;&#3021;&#2972;&#3007;&#2991;&#3006;</option>
+      
+      <Option value="177,273" >ஸ்பெயின்</option>
+      
+      <Option value="178,129" >இலங்கை</option>
+      
+      <Option value="179,218" >&#2970;&#3014;&#2991;&#3007;&#2985;&#3021;&#2975;&#3021; &#3001;&#3014;&#2994;&#2985;&#3006; &#2980;&#3008;&#2997;&#3009;</option>
+      
+      <Option value="180,50" >செயின்ட் கிட்ஸ் நிவிஸ்</option>
+      
+      <Option value="181,112" >செயின்ட் லூசியா</option>
+      
+      <Option value="182,543" >செயின்ட் பிர் மிக்கெலன்</option>
+      
+      <Option value="183,236" >செயின்ட் வின்சென்ட்&கிரனைடா</option>
+      
+      <Option value="184,230" >சூடான்</option>
+      
+      <Option value="185,350" >சுரிநாம்</option>
+      
+      <Option value="186,550" >சுவெல்பார்டு</option>
+      
+      <Option value="187,289" >சுவசிலாந்து</option>
+      
+      <Option value="188,450" >சுவீடன்</option>
+      
+      <Option value="189,65" >சுவிட்சர்லாந்து</option>
+      
+      <Option value="190,145" >சிரியா</option>
+      
+      <Option value="192,163" >தஜிகிஸ்தான்</option>
+      
+      <Option value="193,544" >தான்சானியா</option>
+      
+      <Option value="194,42" >தாய்லாந்து</option>
+      
+      <Option value="195,45" >காம்பியா</option>
+      
+      <Option value="196,262" >டோகோ</option>
+      
+      <Option value="197,545" >டோங்கா</option>
+      
+      <Option value="198,366" >டிரினிடட்&டோபாகோ</option>
+      
+      <Option value="199,481" >துனிஷியா</option>
+      
+      <Option value="200,22" >துருக்கி</option>
+      
+      <Option value="201,30" >துர்க்மெனிஸ்தான்</option>
+      
+      <Option value="202,187" >டர்க்ஸ்&கைக்கோஸ்</option>
+      
+      <Option value="203,546" >டுவாலூ</option>
+      
+      <Option value="204,223" >உகான்டா</option>
+      
+      <Option value="205,233" >உக்ரைன்</option>
+      
+      <Option value="206,3" >ஐக்கிய அரபு நாடுகள்</option>
+      
+      <Option value="207,263" >யுனைடெட் கிங்டம்</option>
+      
+      <Option value="208,496" >யூ.எஸ்.ஏ</option>
+      
+      <Option value="209,304" >உருகுவே</option>
+      
+      <Option value="210,404" >உஸ்பெகிஸ்தான்</option>
+      
+      <Option value="211,547" >வனுட்டா</option>
+      
+      <Option value="212,488" >வாடிகன் சிட்டி</option>
+      
+      <Option value="213,108" >வெனிசுலா</option>
+      
+      <Option value="214,200" >வியட்னாம்</option>
+      
+      <Option value="215,548" >விர்ஜின்( யூ.எஸ்.ஏ)</option>
+      
+      <Option value="216,552" >வாலிஸ் புட்டுனா</option>
+      
+      <Option value="218,551" >&#2965;&#3007;&#2996;&#2965;&#3021;&#2965;&#3009; &#2970;&#2965;&#3006;&#2992;&#3006;</option>
+      
+      <Option value="219,415" >&#2959;&#2990;&#2985;&#3021;</option>
+      
+      <Option value="221,268" >&#2972;&#3006;&#2990;&#3021;&#2986;&#3007;&#2991;&#3006;</option>
+      
+      <Option value="222,201" >&#2972;&#3007;&#2990;&#3021;&#2986;&#3006;&#2986;&#3021;&#2997;&#3015;</option>
+       
+    </select>
+
+      </span>
+  <span id="City2" style="margin-left:10px;color:red;background:green" width=400 height=400><b> City</b> :
+ </span>  </div>
+      </div> 
+     <script>
+	 citylist('84,272');
+//weather('<=Showcity%>');
+</script>  
+  </div>
+</body>
+</html>

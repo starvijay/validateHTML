@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Digital Life to TV Demo App</title>
+    <link rel="stylesheet" type="text/css" href="dl2tv.css">
+</head>
+
+<body>
+
+
+            <table border="1" align="left">
+                <tr><td><img src="images/att.jpg" width="150" height="100"></td>
+                    <td align="center">
+                    <video id="myVideoTag" width="425" height="320" controls autoplay>
+                        <source src="http://192.168.1.5/img/video.ts?video=H264" type="video/mp2t">
+                    </video>
+                    </td>
+                    <td><img src="images/Cisco_Logo_White_300.png" width="150" height="100"></td>
+                </tr>
+        </table>
+        </tr>
+        <tr>
+            <table border="1" align="left">
+                <tr>
+                    <td></td>
+                    <th>
+                    <P>Select Video Camera</P>
+                    </th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>
+                        <P>Camera 1</P>
+                    </th>
+                    <th>
+                        <P>Camera 2</P>
+                    </th>
+                    <th>
+                        <P>Camera 3</P>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+
+                        <img src="http://192.168.1.5/img/snapshot.cgi"  width="242px" height="150px" />
+
+                    </td>
+
+                    <td>
+
+                        <img src="http://192.168.1.5/img/snapshot.cgi"  width="242px" height="150px" />
+                    </td>
+                    <td>
+
+                        <img src="http://192.168.1.5/img/snapshot.cgi"  width="242px" height="150px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <button onclick="vid1SrcChg()">Click to Play Video</button>
+                    </td>
+
+                    <td align="center">
+                        <button onclick="vid2SrcChg()">Click to Play Video</button>
+                    </td>
+                    <td align="center">
+                        <button onclick="vid3SrcChg()">Click to Play Video</button>
+                    </td>
+                </tr>
+            </table>
+
+    <script>
+        function vid1SrcChg()
+            {
+                var player = document.getElementById('myVideoTag');
+                player.setAttribute('src','http://192.168.1.5/img/video.ts?video=H264');
+                player.load();
+            }
+    </script>
+    <script>
+        function vid2SrcChg()
+            {
+
+                var player = document.getElementById('myVideoTag');
+                player.setAttribute('src','http://192.168.1.5/Test.ts');
+                player.load();
+            }
+    </script>
+    <script>
+        function vid3SrcChg()
+            {
+                var player = document.getElementById('myVideoTag');
+                player.setAttribute('src','http://192.168.1.5/img/video.ts?video=H264');
+                player.load();
+            }
+    </script>
+
+
+
+</body>
+</html>
